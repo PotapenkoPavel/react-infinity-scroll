@@ -1,10 +1,19 @@
-import {CONFIG} from "./index";
+import axios, { AxiosResponse } from 'axios'
 
-import type {IPost, PostCallback} from "./index";
+import type { IPost } from './index'
 
-export const getAll = async (page: number, callback: PostCallback) => {
-    const response = await fetch(`https://jsonplaceholder.typicode.com/posts?_limit=${CONFIG.LIMIT}&_page=${page}`)
-    const json: IPost[] = await response.json()
+const CONFIG = {
+    LIMIT: 10,
+}
 
-    callback(json, !json.length)
+export const getAll = async (page: number, limit: number = CONFIG.LIMIT) => {
+    const { status, data }: AxiosResponse<IPost[]> = await axios.get(
+        `https://jsonplaceholder.typicode.com/posts?_limit=${limit}&_page=${page}`
+    )
+
+    if (status !== 200) {
+        throw new Error('Something went wrong')
+    }
+
+    return data
 }
