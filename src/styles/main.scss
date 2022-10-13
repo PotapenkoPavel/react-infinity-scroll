@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  max-width: 500px;
+  margin: 10px 0;
+  border: 1px solid #E6E6E6FF;
+  border-radius: 4px;
+}
+
+.stop-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  border-top: 1px solid #E6E6E6FF;
+}
